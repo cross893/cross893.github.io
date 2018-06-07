@@ -1027,6 +1027,9 @@
 .fa-rocket:before {
   content: "\f135";
 }
+.fa-telegram-plane:before{
+  content: "\f3fe";
+}
 .fa-maxcdn:before {
   content: "\f136";
 }
