@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+}
+
+flower {
+  margin: auto;
+  width: 70vmin;
+  height: 70vmin;
+  position: relative;
+}
+
+butterfly {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: wheel 4.5s infinite cubic-bezier(0.35, 0, 0.6, 1);
+  border: 2px solid white;
+}
+butterfly:nth-child(1) {
+  background: linear-gradient(to top, white 45%, #d96526 65%);
+  width: 94.4444444444%;
+  height: 94.4444444444%;
+  transform: translate(-50%, -50%) rotate(2880deg);
+}
+butterfly:nth-child(2) {
+  background: linear-gradient(to top, white 45%, #d9a426 65%);
+  width: 88.8888888889%;
+  height: 88.8888888889%;
+  transform: translate(-50%, -50%) rotate(2520deg);
+}
+butterfly:nth-child(3) {
+  background: linear-gradient(to top, white 45%, #ced926 65%);
+  width: 83.3333333333%;
+  height: 83.3333333333%;
+  transform: translate(-50%, -50%) rotate(2160deg);
+}
+butterfly:nth-child(4) {
+  background: linear-gradient(to top, white 45%, #8fd926 65%);
+  width: 77.7777777778%;
+  height: 77.7777777778%;
+  transform: translate(-50%, -50%) rotate(1800deg);
+}
+butterfly:nth-child(5) {
+  background: linear-gradient(to top, white 45%, #50d926 65%);
+  width: 72.2222222222%;
+  height: 72.2222222222%;
+  transform: translate(-50%, -50%) rotate(1440deg);
+}
+butterfly:nth-child(6) {
+  background: linear-gradient(to top, white 45%, #26d93b 65%);
+  width: 66.6666666667%;
+  height: 66.6666666667%;
+  transform: translate(-50%, -50%) rotate(1080deg);
+}
+butterfly:nth-child(7) {
+  background: linear-gradient(to top, white 45%, #26d97a 65%);
+  width: 61.1111111111%;
+  height: 61.1111111111%;
+  transform: translate(-50%, -50%) rotate(720deg);
+}
+butterfly:nth-child(8) {
+  background: linear-gradient(to top, white 45%, #26d9b9 65%);
+  width: 55.5555555556%;
+  height: 55.5555555556%;
+  transform: translate(-50%, -50%) rotate(360deg);
+}
+butterfly:nth-child(9) {
+  background: linear-gradient(to top, white 45%, #26b9d9 65%);
+  width: 50%;
+  height: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+butterfly:nth-child(10) {
+  background: linear-gradient(to top, white 45%, #267ad9 65%);
+  width: 44.4444444444%;
+  height: 44.4444444444%;
+  transform: translate(-50%, -50%) rotate(-360deg);
+}
+butterfly:nth-child(11) {
+  background: linear-gradient(to top, white 45%, #263bd9 65%);
+  width: 38.8888888889%;
+  height: 38.8888888889%;
+  transform: translate(-50%, -50%) rotate(-720deg);
+}
+butterfly:nth-child(12) {
+  background: linear-gradient(to top, white 45%, #5026d9 65%);
+  width: 33.3333333333%;
+  height: 33.3333333333%;
+  transform: translate(-50%, -50%) rotate(-1080deg);
+}
+butterfly:nth-child(13) {
+  background: linear-gradient(to top, white 45%, #8f26d9 65%);
+  width: 27.7777777778%;
+  height: 27.7777777778%;
+  transform: translate(-50%, -50%) rotate(-1440deg);
+}
+butterfly:nth-child(14) {
+  background: linear-gradient(to top, white 45%, #ce26d9 65%);
+  width: 22.2222222222%;
+  height: 22.2222222222%;
+  transform: translate(-50%, -50%) rotate(-1800deg);
+}
+butterfly:nth-child(15) {
+  background: linear-gradient(to top, white 45%, #d926a4 65%);
+  width: 16.6666666667%;
+  height: 16.6666666667%;
+  transform: translate(-50%, -50%) rotate(-2160deg);
+}
+butterfly:nth-child(16) {
+  background: linear-gradient(to top, white 45%, #d92665 65%);
+  width: 11.1111111111%;
+  height: 11.1111111111%;
+  transform: translate(-50%, -50%) rotate(-2520deg);
+}
+butterfly:nth-child(17) {
+  background: linear-gradient(to top, white 45%, #d92626 65%);
+  width: 5.5555555556%;
+  height: 5.5555555556%;
+  transform: translate(-50%, -50%) rotate(-2880deg);
+}
+
+@keyframes wheel {
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}

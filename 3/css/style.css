@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css?family=Biryani:900|Bungee+Inline|Share+Tech+Mono");
+html {
+  --hang-time: 0;
+  --spin-time: 0;
+  --drift-amount: 25;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+ul {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  position: relative;
+  background: linear-gradient(135deg, #cedce7 0%, #596a72 100%);
+}
+
+li {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition-duration: calc(var(--spin-time) * 1s);
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-perspective: 1000;
+          perspective: 1000;
+}
+li[data-state="in"] {
+  transition-duration: 0s;
+  -webkit-transform: rotatey(90deg);
+          transform: rotatey(90deg);
+}
+li[data-state="in"] .card {
+  -webkit-transform: rotatey(calc(var(--drift-amount) * 1deg));
+          transform: rotatey(calc(var(--drift-amount) * 1deg));
+}
+li[data-state="show"] {
+  -webkit-transform: rotatey(0deg);
+          transform: rotatey(0deg);
+  transition-timing-function: ease-out;
+  transition-delay: calc(var(--spin-time) * 1s);
+}
+li[data-state="show"] .card {
+  -webkit-animation: drift calc(var(--hang-time) * 1s) linear;
+          animation: drift calc(var(--hang-time) * 1s) linear;
+}
+li[data-state="out"] {
+  -webkit-transform: rotatey(-90deg);
+          transform: rotatey(-90deg);
+  transition-timing-function: ease-in;
+}
+li[data-state="out"] .card {
+  -webkit-transform: rotatey(calc(var(--drift-amount) * -1deg));
+          transform: rotatey(calc(var(--drift-amount) * -1deg));
+}
+
+.card {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.card.credit {
+  width: 350px;
+  height: 200px;
+  background-color: #1e5799;
+  background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+  border-radius: 10px;
+  padding: 30px;
+}
+.card.credit h1 {
+  font-family: 'Biryani', sans-serif;
+  color: #EEE;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+.card.credit .chip {
+  display: block;
+  background-color: #EEE;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #666;
+  border-right-color: white;
+  border-bottom-color: white;
+}
+.card.credit .embossed {
+  font-family: 'Share Tech Mono', monospace;
+  color: #EEE;
+  width: 100%;
+  margin-top: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+.card.credit .number {
+  text-align: center;
+  font-size: 26px;
+}
+.card.credit .date {
+  text-align: right;
+  font-size: 18px;
+}
+.card.credit .name {
+  font-size: 22px;
+}
+.card.birthday {
+  width: 300px;
+  height: 400px;
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.card.birthday .front, .card.birthday .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  content: '';
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
+  -webkit-transform: rotatey(10deg);
+          transform: rotatey(10deg);
+}
+.card.birthday .front {
+  width: 90%;
+  background-color: #eee;
+  -webkit-transform: rotatey(-10deg);
+          transform: rotatey(-10deg);
+  background-image: url(https://images.unsplash.com/photo-1479750178258-aec5879046ce?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=ae5399e4fa1724aefc6adfb9004d8a74);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.card.birthday .front h1 {
+  font-family: 'Bungee Inline', cursive;
+  font-size: 43px;
+  text-align: center;
+  color: steelblue;
+  margin-bottom: 60px;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+  text-shadow: 5px 5px 2px rgba(255, 255, 255, 0.8);
+}
+.card.playing {
+  width: 200px;
+  height: 320px;
+}
+.card.playing .face {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  background: linear-gradient(135deg, white 0%, #ededed 100%);
+  border-radius: 10px;
+  padding: 30px;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transform: rotatez(20deg) translate(-15%, -6%);
+          transform: rotatez(20deg) translate(-15%, -6%);
+}
+.card.playing .face .suit {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card.playing .face .suit .ace {
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-family: 'Share Tech Mono', monospace;
+}
+.card.playing .face .suit .diamond {
+  width: 75px;
+  height: 100px;
+  background-color: red;
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.card.playing .face .suit.big {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.card.playing .face .suit.small .diamond {
+  width: 25px;
+  height: 40px;
+}
+.card.playing .face .suit.bottom {
+  right: 20px;
+  bottom: 20px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+@-webkit-keyframes drift {
+  from {
+    -webkit-transform: rotatey(calc(var(--drift-amount) * 1deg));
+            transform: rotatey(calc(var(--drift-amount) * 1deg));
+  }
+  to {
+    -webkit-transform: rotatey(calc(var(--drift-amount) * -1deg));
+            transform: rotatey(calc(var(--drift-amount) * -1deg));
+  }
+}
+
+@keyframes drift {
+  from {
+    -webkit-transform: rotatey(calc(var(--drift-amount) * 1deg));
+            transform: rotatey(calc(var(--drift-amount) * 1deg));
+  }
+  to {
+    -webkit-transform: rotatey(calc(var(--drift-amount) * -1deg));
+            transform: rotatey(calc(var(--drift-amount) * -1deg));
+  }
+}

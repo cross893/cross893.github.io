@@ -1,0 +1,54 @@
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+const img = document.getElementById("source");
+
+let treshold = 2000;
+
+function resize() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+}
+window.addEventListener("resize", resize);
+resize();
+
+function scaleImage(img, width, height) {
+    const canvasRatio = width / height;
+    const imgRatio = img.width / img.height;
+    let h = height;
+    let w = height * imgRatio;
+    let x = (width - w) / 2;
+    let y = 0;
+    ctx.drawImage(img, x, y, w, h);
+}
+
+function draw(time) {
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.fillStyle = '#111';
+    ctx.fillRect(0, 0, w, h);
+    scaleImage(img, w, h);
+    const imageData = ctx.getImageData(0, 0, w, h);
+    const data = imageData.data;
+    for (let i = 0; i < h; i++) {
+        let counter = treshold * 2 - Math.ceil(time) % treshold;
+        for (let j = 0; j < w; j++) {
+            const index = (i * w + j) * 4;
+            const avg = (data[index] + data[index + 1] + data[index + 2]) / 3;
+            counter += avg;
+            let color;
+            if (counter > treshold) {
+                color = [250, 250, 250];
+                counter -= treshold / 2;
+            } else {
+                color = [0, 35, 50];
+            }
+            [data[index], data[index + 1], data[index + 2]] = color;
+        }
+    }
+    ctx.putImageData(imageData, 0, 0);
+    requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
