@@ -1,0 +1,68 @@
+$color: #524656;
+$color2: #CF4647;
+$body-bg-color: white;
+$btn-text-color: $color2;
+$btn-bg-color: #E5DDCB;
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $body-bg-color;
+}
+
+[class^="ohword"] {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-family: 'Righteous', sans-serif;
+  font-size: 10vw;
+  text-transform: uppercase;
+  text-shadow: rgba(black, 0.2) 0.6vw 0.6vw 0;
+  color: white;
+}
+
+.ohword-2 {
+  height: 0;
+}
+
+.letter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+  padding: 0 1vw;
+  height: 100%;
+  
+  .ohword-1 & {
+    background-color: $color;
+  }
+  
+  .ohword-2 & {
+    background-color: $color2;
+  }
+}
+
+button {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  padding: 8px 24px 10px;
+  color: $btn-text-color;
+  background-color: $btn-bg-color;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: rgba(black, 0.1) 4px 4px 0;
+  opacity: 0;
+  
+  &:active {
+    transform: translateY(2px);
+  }
+}
