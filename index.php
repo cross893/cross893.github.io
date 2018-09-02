@@ -258,7 +258,12 @@
         <div class="row">
           <div class="col-md-9 col-sm-12">
             <div class="row">
-              <form action="#" method="post" class="contact-form"><!--Доделать от сюда-->
+             <?
+				      @extract($_SERVER, EXTR_SKIP); @extract($_POST, EXTR_SKIP); @extract($_GET, EXTR_SKIP);
+			        if(!@$body) $body="Привет!\nСегодня ".date("d.m.Y").".\nНапиши своё сообщение сюда.";
+			       ?>
+			        <form action="<?=$_SERVER["REQUEST_URI"]?>" method="post" class="contact-form">
+			        	<?if (empty($_GET['noform'])) ?>
                 <fieldset class="col-md-4 col-sm-6 col-xs-12">
                   <input type="text" id="name" placeholder="Name...">
                 </fieldset>
@@ -274,7 +279,17 @@
                 <fieldset class="col-md-12 col-sm-12 col-xs-12">
                   <input type="submit" class="button default" value="Отправить">
                 </fieldset>
-              </form><!--До сюда-->
+		         	</form>
+		        	<?
+				        if (@$doSendSendmail) {
+				      	  echo "<h2>Посылаем письмо</h2>\n";
+					        if (mail($from,$name,$body,"From: \"PHP mail()\" <me@htlmhelp.ru>")) {
+						        echo "OK, письмо отправленно.<br>\n";
+					        } else {
+						        echo "При отправке письма произошла ошибка.<br>\n";
+					        }
+				        }
+			        ?>
             </div>
           </div>
           <div class="col-md-3 col-sm-12">
